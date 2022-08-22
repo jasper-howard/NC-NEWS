@@ -1,0 +1,27 @@
+.Article-Div {
+  padding-left: 1rem;
+  width: 80%;
+  display: block;
+
+  border: solid 4px rgb(13, 0, 255);
+
+  margin: auto;
+  margin-bottom: 1em;
+  margin-top: 1em;
+
+  padding-bottom: 10px;
+
+  background-color: yellow;
+  transform: skew(-3deg, 1deg);
+}
+.Article-H2 {
+  text-align: left;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.5em;
+  font-weight: 300;
+}
+.Article-P {
+  text-align: left;
+  font-weight: 200;
+}
