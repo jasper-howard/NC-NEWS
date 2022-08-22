@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import "../component_css/Tab.css";
+import "../component css/Tab.css";
 
 // could make tab show start of top headline have hardcoded for now
 
 const Tabs = () => {
+  const { topic } = useParams();
+  console.log(topic);
   return (
     <>
       <section className="Tab-Section">
