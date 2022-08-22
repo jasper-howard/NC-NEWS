@@ -36,4 +36,11 @@ const updateVotes = (article_id) => {
     });
 };
 
-export { fetchAllArticles, fetchArticle, updateVotes };
+const fetchComments = (article_id) => {
+  return axios
+    .get(`https://nc-be-news.herokuapp.com/api/articles/${article_id}/comments`)
+    .then((res) => {
+      return res.data;
+    });
+};
+export { fetchAllArticles, fetchArticle, updateVotes, fetchComments };
