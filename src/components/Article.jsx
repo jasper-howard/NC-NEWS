@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchArticle } from "../api";
+import { fetchArticle, updateVotes } from "../api";
 import "../component css/Button.css";
 
 const Article = () => {
@@ -12,23 +12,32 @@ const Article = () => {
   });
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(false);
+  const [votes, setVotes] = useState(0);
   const { article_id } = useParams();
 
   useEffect(() => {
     fetchArticle(article_id)
       .then(({ article }) => {
         setArticle(article);
+        setVotes(article.votes);
       })
       .then(() => {
         setLoading(false);
       })
       .catch((err) => {
-        setErr(err);
+        setErr(true);
       });
   }, [article_id]);
 
+  const handleUpVote = (kind) => {
+    setVotes((currentVote) => {
+      return currentVote + 1;
+    });
+    updateVotes(article_id);
+  };
+
+  if (err) return <em>Article not found</em>;
   if (loading) return <em>LOADING...</em>;
-  if (err) return <em>{err}</em>;
   return (
     <>
       <div className="Article-Div">
@@ -39,10 +48,10 @@ const Article = () => {
         <p className="Article-P">{article.body}</p>
         <section className="Article-Button_Section">
           <button className="button-85-Left">comment</button>
-          {/* <section className="Inner-Button"></section> */}
-          <p className="Inner-Button">Votes: {article.votes}</p>
-          <button className="button-85-Right">+</button>
-          {/* <button className="button-85-Right">-</button> */}
+          <p className="Inner-Button">Votes: {votes}</p>
+          <button className="button-85-Right" onClick={handleUpVote}>
+            +
+          </button>
         </section>
       </div>
     </>

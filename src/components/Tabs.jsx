@@ -7,7 +7,6 @@ import "../component css/Tab.css";
 
 const Tabs = () => {
   const { topic } = useParams();
-  console.log(topic);
   return (
     <>
       <section className="Tab-Section">
