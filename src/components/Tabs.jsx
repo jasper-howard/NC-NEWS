@@ -1,23 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
+import { Link, useParams } from "react-router-dom";
+import "../component_css/Tab.css";
 
 // could make tab show start of top headline have hardcoded for now
 
-const Tabs = ({ article }) => {
-  const [category, setCategory] = useState("");
-
+const Tabs = () => {
   return (
     <>
-      <section className="Top-Section">
-        <div className="Top-1" onClick={setCategory("football")}>
-          FOOTBALL:<p>All the latest ball news</p>
-        </div>
-        <div className="Top-2">
-          CODING:<p>Running a Node App</p>
-        </div>
-        <div className="Top-3">
-          COOKING:<p>Seafood substitutions are increasing</p>
-        </div>
+      <section className="Tab-Section">
+        <Link to="/all">
+          <div className="Tab-All">
+            ALL:<p>Read all about it</p>
+          </div>
+        </Link>
+        <Link to="/football">
+          <div className="Tab-Football">
+            FOOTBALL:<p>All the latest ball news</p>
+          </div>
+        </Link>
+        <Link to="/coding">
+          <div className="Tab-Coding">
+            CODING:<p>Running a Node App</p>
+          </div>
+        </Link>
+        <Link to="/cooking">
+          <div className="Tab-Cooking">
+            COOKING:<p>Seafood substitutions are increasing</p>
+          </div>
+        </Link>
       </section>
     </>
   );

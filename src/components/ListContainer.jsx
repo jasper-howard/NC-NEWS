@@ -8,17 +8,17 @@ import { useParams } from "react-router-dom";
 const ListContainer = () => {
   const [allArticles, setAllArticles] = useState([]);
   const [loading, setLoading] = useState(true);
-  //   const { category } = useParams();
+  const { category } = useParams();
 
   useEffect(() => {
-    fetchAllArticles()
+    fetchAllArticles(category)
       .then(({ articles }) => {
         setAllArticles(articles);
       })
       .then(() => {
         setLoading(false);
       });
-  }, []);
+  }, [category]);
 
   const listItems = allArticles.map((article, index) => {
     return <ListItem article={article} key={index} />;

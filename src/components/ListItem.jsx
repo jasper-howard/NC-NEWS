@@ -7,6 +7,7 @@ const listItem = ({ article }) => {
       <div className="Article-Div">
         <h2 className="Article-H2">{article.title}</h2>
         <p className="Article-P">{article.body.slice(0, 140)} ...MORE</p>
+        <p className="Article-P">{article.topic}</p>
       </div>
     </>
   );
