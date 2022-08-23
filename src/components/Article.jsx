@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { fetchArticle, fetchComments, updateVotes } from "../api";
 import "../component css/Button.css";
 import SingleComment from "./SingleComment";
+import AddComment from "./AddComment";
 
 const Article = () => {
   const [article, setArticle] = useState({
@@ -26,12 +27,6 @@ const Article = () => {
   const { article_id } = useParams();
 
   useEffect(() => {
-    // Promise.all([fetchArticle(article_id), fetchComments(article_id)]).then(
-    //   ([{ article }, comments]) => {
-    //     console.log(article, "article", comments, "comments");
-    //   }
-    // );
-
     fetchArticle(article_id)
       .then(({ article }) => {
         setArticle(article);
@@ -54,7 +49,13 @@ const Article = () => {
   }, [article_id]);
 
   const commentArray = comments.map((comment) => {
-    return <SingleComment comment={comment} />; // change to single comment component
+    return (
+      <SingleComment
+        key={comment.comment_id}
+        topic={article.topic}
+        comment={comment}
+      />
+    );
   });
 
   const handleUpVote = (kind) => {
@@ -64,24 +65,29 @@ const Article = () => {
     updateVotes(article_id);
   };
 
-  if (err) return <em>something went wrong</em>;
-  if (loading) return <em>LOADING...</em>;
-  return (
+  return err ? (
+    <em>something went wrong</em>
+  ) : loading ? (
+    <em>LOADING...</em>
+  ) : (
     <>
-      <div className="Article-Div">
+      <div className={`Article-Div ${article.topic}`}>
         <section className="Article-Header">
           <h2 className="Article-H2">{article.title}</h2>
           <p className="Article-P">Topic: {article.topic}</p>
         </section>
         <p className="Article-P">{article.body}</p>
         <section className="Article-Button_Section">
-          <button className="button-85-Left">comment</button>
+          {/* <button className="button-85-Left">comment</button> */}
           <p className="Inner-Button">Votes: {votes}</p>
           <button className="button-85-Right" onClick={handleUpVote}>
             +
           </button>
         </section>
       </div>
+      <section className="Article-Comments">
+        <AddComment topic={article.topic} article_id={article_id} />
+      </section>
       <section className="Article-Comments">{commentArray}</section>
     </>
   );

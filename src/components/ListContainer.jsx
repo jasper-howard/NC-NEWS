@@ -11,21 +11,17 @@ const ListContainer = () => {
   const { topic } = useParams();
 
   useEffect(() => {
-    fetchAllArticles(topic)
-      .then(({ articles }) => {
-        setAllArticles(articles);
-      })
-      .then(() => {
-        setLoading(false);
-      });
+    fetchAllArticles(topic).then(({ articles }) => {
+      setAllArticles(articles);
+      setLoading(false);
+    });
   }, [topic]);
 
   const listItems = allArticles.map((article, index) => {
-    return <ListItem article={article} key={index} />;
+    return <ListItem article={article} unique={index} key={index} />;
   });
 
-  if (loading) return <em>LOADING...ListContainer</em>;
-  return <div>{listItems}</div>;
+  return loading ? <em>LOADING...ListContainer</em> : <div>{listItems}</div>;
 };
 
 export default ListContainer;

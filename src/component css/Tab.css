@@ -5,6 +5,8 @@
 }
 
 .Tab-All {
+  /* position: fixed; coool */
+  display: block;
   padding: 0.2rem;
   padding-left: 0.3rem;
   width: 18vw;
@@ -13,6 +15,7 @@
   border-right: solid 4px rgb(255, 0, 217);
   border-bottom: solid 4px rgb(255, 0, 217);
   margin: 12%;
+  margin-right: 12px;
   padding-bottom: 10px;
   background-color: yellow;
   transform: skew(-8deg, 6deg);
@@ -26,9 +29,10 @@
   font-size: 0.8em;
   border: solid 4px rgb(255, 0, 217);
   margin: 12%;
+  margin-right: 10px;
   padding-bottom: 10px;
   background-color: yellow;
-  transform: skew(-8deg, 6deg);
+  transform: skew(-6deg, 6deg);
 }
 .Tab-Football {
   padding: 0.2rem;
@@ -39,9 +43,10 @@
   border-right: solid 4px rgb(13, 0, 255);
   border-bottom: solid 4px rgb(13, 0, 255);
   margin: 12%;
+  margin-right: 15px;
   padding-bottom: 10px;
   background-color: yellow;
-  transform: skew(-8deg, 6deg);
+  transform: skew(-6deg, 6deg);
 }
 .Tab-Coding {
   padding: 0.2rem;
@@ -52,10 +57,11 @@
   border-bottom: solid 4px rgb(255, 0, 0);
   border-right: solid 4px rgb(255, 0, 0);
   margin: 12%;
+  margin-right: 9px;
   padding-bottom: 10px;
   background-color: yellow;
   /* transform: scaleX(1.3); */
-  transform: skew(0deg, 3deg);
+  transform: skew(-1deg, 3deg);
 }
 .Tab-Cooking {
   padding: 0.2rem;
@@ -66,6 +72,7 @@
   border-bottom: solid 4px rgb(34, 255, 0);
   border-right: solid 4px rgb(34, 255, 0);
   margin: 12%;
+  margin-right: 15px;
   padding-bottom: 10px;
   background-color: yellow;
   /* transform: scaleX(1.3); */

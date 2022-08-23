@@ -2,15 +2,11 @@
   padding-left: 1rem;
   width: 80%;
   display: block;
-
-  border: solid 4px rgb(13, 0, 255);
-
+  border: var(--all);
   margin: auto;
   margin-bottom: 1em;
   margin-top: 1em;
-
   padding-bottom: 10px;
-
   background-color: yellow;
   transform: skew(-3deg, 1deg);
 }

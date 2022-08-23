@@ -1,18 +1,13 @@
 import axios from "axios";
 
 const fetchAllArticles = (topic) => {
-  if (topic === "all") {
-    return axios
-      .get(`https://nc-be-news.herokuapp.com/api/articles`)
-      .then((res) => {
-        return res.data;
-      });
-  } else
-    return axios
-      .get(`https://nc-be-news.herokuapp.com/api/articles?topic=${topic}`)
-      .then((res) => {
-        return res.data;
-      });
+  return axios
+    .get(`https://nc-be-news.herokuapp.com/api/articles`, {
+      params: { topic: topic },
+    })
+    .then((res) => {
+      return res.data;
+    });
 };
 
 const fetchArticle = (article_id) => {
@@ -28,9 +23,6 @@ const updateVotes = (article_id) => {
     .patch(`https://nc-be-news.herokuapp.com/api/articles/${article_id}`, {
       inc_votes: 1,
     })
-    .then((res) => {
-      console.log(res.data);
-    })
     .catch((err) => {
       console.log(err);
     });
@@ -43,4 +35,20 @@ const fetchComments = (article_id) => {
       return res.data;
     });
 };
-export { fetchAllArticles, fetchArticle, updateVotes, fetchComments };
+
+const postComment = ({ article_id, username, body }) => {
+  return axios.post(
+    `https://nc-be-news.herokuapp.com/api/articles/${article_id}/comments`,
+    {
+      username: username,
+      body: body,
+    }
+  );
+};
+export {
+  fetchAllArticles,
+  fetchArticle,
+  updateVotes,
+  fetchComments,
+  postComment,
+};
