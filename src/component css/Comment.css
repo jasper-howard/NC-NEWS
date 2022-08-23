@@ -1,0 +1,33 @@
+.Add_Comment-text_box {
+  width: 20em;
+  height: 7em;
+  border-radius: 0px;
+  position: relative;
+  text-align: left;
+}
+
+.AddComment {
+  padding-left: 1rem;
+  width: 80%;
+  display: block;
+  text-align: left;
+  /* border: solid; */
+
+  margin: auto;
+  margin-bottom: 1em;
+  margin-top: 1em;
+
+  padding-bottom: 10px;
+
+  background-color: yellow;
+  transform: skew(-3deg, 1deg);
+}
+.football {
+  border: var(--football);
+}
+.coding {
+  border: var(--coding);
+}
+.cooking {
+  border: var(--cooking);
+}
