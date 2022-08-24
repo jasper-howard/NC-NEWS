@@ -1,8 +1,7 @@
-import React, { useState } from "react";
 import "../component css/List-Article.css";
 import { UserContext } from "../context/userContext";
 import { useContext } from "react";
-import { deleteComment } from "../api";
+
 import useDeleter from "../hooks/useDeleter";
 
 const SingleComment = ({ comment, topic }) => {

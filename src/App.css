@@ -51,7 +51,7 @@ a {
 
 .Title {
   padding-left: 1rem;
-  width: 75%;
+  width: 60vw;
   text-align: left;
   font-size: 4em;
   font-weight: 200;
@@ -83,19 +83,34 @@ a {
   text-orientation: upright;
   font-size: smaller;
   text-align: left;
-  margin-top: 20%;
+  margin-top: 3%;
 }
 .Welcome-Section {
   display: flex;
   justify-content: space-between;
 }
-
-@media only screen and (min-width: 600px) {
-  body {
-    background-color: rgb(197, 197, 197);
-  }
+.Slogan {
+  writing-mode: vertical-lr;
+  text-orientation: upright;
+  font-size: 0.8rem;
+  text-align: left;
+  margin-top: 3%;
 }
 
 .Pre_del {
   filter: grayscale(1);
+}
+
+h6 {
+  font-size: 0.8rem;
+  margin: 0px;
+  display: inline-block;
+  padding-left: 8%;
+  font-weight: 300;
+}
+
+@media only screen and (min-width: 600px) {
+  body {
+    background-color: rgb(255, 255, 255);
+  }
 }

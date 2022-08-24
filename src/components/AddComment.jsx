@@ -6,7 +6,7 @@ import { useContext, useState } from "react";
 import { postComment } from "../api";
 import OptimisticComment from "./OptimisticCommnet";
 
-const AddComment = ({ topic, article_id, setLoading }) => {
+const AddComment = ({ topic, article_id }) => {
   const [currText, setCurrText] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [commentRes, setCommentRes] = useState({});
@@ -23,7 +23,6 @@ const AddComment = ({ topic, article_id, setLoading }) => {
     }).then(({ data }) => {
       setCommentRes(data.comment);
       setSubmitted(true);
-      setLoading(false); // though this would cause rerender in parent
     });
   };
   return (
