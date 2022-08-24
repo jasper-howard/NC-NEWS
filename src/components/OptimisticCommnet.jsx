@@ -1,13 +1,19 @@
 import React from "react";
 import "../component css/List-Article.css";
 
-const OptimisticComment = ({ username, body, topic }) => {
-  return (
+import useDeleter from "../hooks/useDeleter";
+
+const OptimisticComment = ({ comment_id, body, topic }) => {
+  const { deleteStyle, isDeleted, handleDelete } = useDeleter(comment_id);
+  return isDeleted ? null : (
     <>
-      <div className={`Article-Div ${topic}`}>
+      <div className={`Article-Div ${topic} ${deleteStyle}`}>
         <p className="Article-P">{body}</p>
-        <p className="Article-P">User: {username}</p>
+        <p className="Article-P">User: YOU!</p>
         <p className="Article-P">Votes: 0</p>
+        <button className={`${deleteStyle}`} onClick={handleDelete}>
+          Delete
+        </button>
       </div>
     </>
   );

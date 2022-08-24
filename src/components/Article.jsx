@@ -86,7 +86,11 @@ const Article = () => {
         </section>
       </div>
       <section className="Article-Comments">
-        <AddComment topic={article.topic} article_id={article_id} />
+        <AddComment
+          topic={article.topic}
+          article_id={article_id}
+          setLoading={setLoading}
+        />
       </section>
       <section className="Article-Comments">{commentArray}</section>
     </>

@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Tabs from "./components/Tabs";
 import Article from "./components/Article";
 import { UserContext } from "./context/userContext";
-import TitleAndAvatar from "./components/TitleAndAvatar";
+import TitleAndName from "./components/TitleAndName";
 
 function App() {
   const [user] = React.useState({
@@ -20,7 +20,7 @@ function App() {
     <BrowserRouter>
       <UserContext.Provider value={{ user }}>
         <div className="App">
-          <TitleAndAvatar user={user} />
+          <TitleAndName user={user} />
           <Tabs />
           <Routes>
             <Route path="/" element={<ListContainer />} />

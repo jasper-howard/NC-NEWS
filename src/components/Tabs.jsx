@@ -1,4 +1,3 @@
-// import { useEffect, useState } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
 import "../component css/Tab.css";
@@ -6,13 +5,6 @@ import "../component css/Tab.css";
 // map trough a get of topics to make tabs
 
 const Tabs = () => {
-  // const topic = document.location.pathname.slice(1);
-  // could come in vvv
-  // const [topicSelected, setTopicSelected] = useState("");
-  // useEffect(() => {
-  //   setTopicSelected(topic);
-  // }, [topic]);
-
   return (
     <>
       <section className="Tab-Section">

@@ -9,6 +9,7 @@ import OptimisticComment from "./OptimisticCommnet";
 const AddComment = ({ topic, article_id }) => {
   const [currText, setCurrText] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [commentRes, setCommentRes] = useState({});
   const {
     user: { user }, // why are you mad ?
   } = useContext(UserContext);
@@ -19,8 +20,10 @@ const AddComment = ({ topic, article_id }) => {
       username: user.username,
       body: currText,
       article_id: article_id,
+    }).then(({ data }) => {
+      setCommentRes(data.comment);
+      setSubmitted(true);
     });
-    setSubmitted(true);
   };
   return (
     <>
@@ -48,7 +51,8 @@ const AddComment = ({ topic, article_id }) => {
         <OptimisticComment
           topic={topic}
           body={currText}
-          username={user.username}
+          comment_id={commentRes.comment_id}
+          setSubmitted={setSubmitted}
         />
       ) : null}
     </>
