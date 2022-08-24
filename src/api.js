@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const fetchAllArticles = (topic) => {
+const fetchAllArticles = (topic, sort_by, order) => {
   return axios
     .get(`https://nc-be-news.herokuapp.com/api/articles`, {
-      params: { topic: topic },
+      params: { topic: topic, sort_by: sort_by, order: order },
     })
     .then((res) => {
       return res.data;
@@ -45,10 +45,16 @@ const postComment = ({ article_id, username, body }) => {
     }
   );
 };
+const deleteComment = (comment_id) => {
+  return axios
+    .delete(`https://nc-be-news.herokuapp.com/api/comments/${comment_id}`)
+    .then((res) => res.data);
+};
 export {
   fetchAllArticles,
   fetchArticle,
   updateVotes,
   fetchComments,
   postComment,
+  deleteComment,
 };

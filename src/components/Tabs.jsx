@@ -2,6 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../component css/Tab.css";
+// import { useState } from "react";
 
 // map trough a get of topics to make tabs
 
