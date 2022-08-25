@@ -4,7 +4,7 @@ import { fetchArticle, fetchComments, updateVotes } from "../api";
 import "../component css/Button.css";
 import SingleComment from "./SingleComment";
 import AddComment from "./AddComment";
-
+import deepai from "deepai";
 const Article = () => {
   const [article, setArticle] = useState({
     title: "loading",
@@ -25,6 +25,8 @@ const Article = () => {
     },
   ]);
   const { article_id } = useParams();
+  const [url, setUrl] = useState("");
+  const [imageWait, setImageWait] = useState("no image yet");
 
   useEffect(() => {
     fetchArticle(article_id)
@@ -65,6 +67,16 @@ const Article = () => {
     updateVotes(article_id);
   };
 
+  const handleImgGen = async () => {
+    setImageWait("plz wait");
+    deepai.setApiKey("2ee562fb-63b0-4268-9b3f-a64792ddb865"); /// set this in .env
+
+    const resp = await deepai.callStandardApi("text2img", {
+      text: article.title,
+    });
+    setUrl(resp.output_url);
+    setImageWait("ta da");
+  };
   return err ? (
     <em>something went wrong</em>
   ) : loading ? (
@@ -74,6 +86,9 @@ const Article = () => {
       <div className={`Article-Div ${article.topic}`}>
         <section className="Article-Header">
           <h2 className="Article-H2">{article.title}</h2>
+          <p>{imageWait}</p>
+          <img src={url} />
+          <button onClick={handleImgGen}>click to get an image from ai</button>
           <p className="Article-P">Topic: {article.topic}</p>
         </section>
         <p className="Article-P">{article.body}</p>

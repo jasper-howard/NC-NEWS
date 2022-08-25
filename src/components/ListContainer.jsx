@@ -1,9 +1,10 @@
 import { fetchAllArticles } from "../api.js";
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import ListItem from "./ListItem.jsx";
 import { useParams, useSearchParams } from "react-router-dom";
+import { StyleContext } from "../context/styleContext";
 
 const ListContainer = () => {
   const [allArticles, setAllArticles] = useState([]);
@@ -13,7 +14,7 @@ const ListContainer = () => {
   const queryObj = Object.fromEntries([...searchParams]);
   const [sort_by, setSort_by] = useState(queryObj.sort_by);
   const [order, setOrder] = useState(queryObj.order);
-
+  const { setBorderStyle } = useContext(StyleContext);
   const queryAssignObj = {};
 
   if (sort_by) {
@@ -30,6 +31,7 @@ const ListContainer = () => {
   }
 
   useEffect(() => {
+    setBorderStyle(topic);
     fetchAllArticles(topic, sort_by, order).then(({ articles }) => {
       setAllArticles(articles);
       setLoading(false);
@@ -38,11 +40,11 @@ const ListContainer = () => {
   }, [topic, sort_by, order, setSearchParams]);
 
   const listItems = allArticles.map((article, index) => {
-    return <ListItem article={article} unique={index} key={index} />;
+    return <ListItem article={article} key={index} />;
   });
 
   return loading ? (
-    <em>LOADING...ListContainer</em>
+    <em>LOADING...Articles</em>
   ) : (
     <div>
       <section>
@@ -74,7 +76,7 @@ const ListContainer = () => {
           </select>
         </form>
       </section>
-      {listItems}
+      <div className="ListContainer">{listItems}</div>
     </div>
   );
 };

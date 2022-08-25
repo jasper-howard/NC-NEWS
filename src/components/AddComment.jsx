@@ -11,7 +11,7 @@ const AddComment = ({ topic, article_id }) => {
   const [submitted, setSubmitted] = useState(false);
   const [commentRes, setCommentRes] = useState({});
   const {
-    user: { user }, // why are you mad ?
+    user: { user },
   } = useContext(UserContext);
 
   const handleSubmit = (event) => {
@@ -29,6 +29,7 @@ const AddComment = ({ topic, article_id }) => {
     <>
       <div className={`AddComment ${topic}`}>
         <form onSubmit={handleSubmit}>
+          <br />
           <label>hello {user.username} add a comment here</label>
           <br></br>
           <br></br>

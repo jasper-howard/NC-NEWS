@@ -4,6 +4,18 @@
   --coding: solid 4px rgb(255, 0, 0);
   --cooking: solid 4px rgb(34, 255, 0);
 }
+.all {
+  border: var(--all);
+}
+.football {
+  border: var(--football);
+}
+.cooking {
+  border: var(--cooking);
+}
+.coding {
+  border: var(--coding);
+}
 
 .App {
   text-align: center;
@@ -108,9 +120,64 @@ h6 {
   padding-left: 8%;
   font-weight: 300;
 }
+img {
+  width: 83%;
+  margin-right: 5%;
+}
+
+textarea {
+  resize: none;
+}
+
+.Div {
+  padding-left: 1rem;
+  width: 80%;
+  display: block;
+  border: var(--all);
+  margin: auto;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  padding-bottom: 10px;
+  background-color: yellow;
+  transform: skew(-3deg, 1deg);
+}
 
 @media only screen and (min-width: 600px) {
   body {
     background-color: rgb(255, 255, 255);
+  }
+  .ListContainer {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow: wrap;
+  }
+  .Article-Div-List {
+    font-size: 0.7em;
+    max-width: 25vw;
+    padding-left: 1rem;
+    width: 80%;
+    display: block;
+    margin: auto;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    padding-bottom: 10px;
+    background-color: yellow;
+    transform: skew(-3deg, 1deg);
+  }
+  .Article-Div {
+    padding-left: 1rem;
+    width: 80%;
+    display: block;
+    margin: auto;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    padding-bottom: 10px;
+    background-color: yellow;
+    transform: skew(-3deg, 1deg);
+  }
+  textarea {
+    min-width: 95%;
+    resize: none;
   }
 }
