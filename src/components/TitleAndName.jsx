@@ -17,9 +17,9 @@ const TitleAndName = ({ user: { user } }) => {
       <div className="Welcome">
         {/* <img src={user.avatar_url} alt="avatar pic" /> */}
         <p>
-          {user.username}
-          <br />
           Welcome
+          <br />
+          {user.username}
         </p>
       </div>
     </section>

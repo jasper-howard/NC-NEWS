@@ -53,7 +53,6 @@ const ListContainer = () => {
           <select
             onChange={(event) => {
               setSort_by(event.target.value);
-              // setSearchParams({ sort_by: event.target.value }); this feels like better place but it replaces other query
             }}
             className="Select"
           >
@@ -67,7 +66,6 @@ const ListContainer = () => {
           <select
             onChange={(event) => {
               setOrder(event.target.value);
-              // setSearchParams({ order: event.target.value });
             }}
             className="Select"
           >

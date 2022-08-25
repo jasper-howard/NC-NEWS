@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchArticle, fetchComments, updateVotes } from "../api";
+import { fetchArticle, fetchComments, updateVotesArticle } from "../api";
 import "../component css/Button.css";
 import SingleComment from "./SingleComment";
 import AddComment from "./AddComment";
 import deepai from "deepai";
+import useImageGen from "../hooks/useImageGen";
 const Article = () => {
   const [article, setArticle] = useState({
     title: "loading",
@@ -25,8 +26,8 @@ const Article = () => {
     },
   ]);
   const { article_id } = useParams();
-  const [url, setUrl] = useState("");
-  const [imageWait, setImageWait] = useState("no image yet");
+
+  const { imageWait, url, handleImgGen } = useImageGen(article.title);
 
   useEffect(() => {
     fetchArticle(article_id)
@@ -60,23 +61,17 @@ const Article = () => {
     );
   });
 
-  const handleUpVote = (kind) => {
+  const handleUpVote = (polarity) => {
+    let value = 1;
+    if (polarity === "down") {
+      value = -1;
+    }
     setVotes((currentVote) => {
-      return currentVote + 1;
+      return currentVote + value;
     });
-    updateVotes(article_id);
+    updateVotesArticle(article_id, value);
   };
 
-  const handleImgGen = async () => {
-    setImageWait("plz wait");
-    deepai.setApiKey("2ee562fb-63b0-4268-9b3f-a64792ddb865"); /// set this in .env
-
-    const resp = await deepai.callStandardApi("text2img", {
-      text: article.title,
-    });
-    setUrl(resp.output_url);
-    setImageWait("ta da");
-  };
   return err ? (
     <em>something went wrong</em>
   ) : loading ? (
@@ -86,21 +81,38 @@ const Article = () => {
       <div className={`Article-Div ${article.topic}`}>
         <section className="Article-Header">
           <h2 className="Article-H2">{article.title}</h2>
-          <p>{imageWait}</p>
-          <img src={url} />
-          <button onClick={handleImgGen}>click to get an image from ai</button>
+          <img src={url} alt="" />
+          <section className="Button-Section">
+            <button className={`${article.topic}-s`} onClick={handleImgGen}>
+              get image from ai
+            </button>
+            <p>{imageWait}</p>
+          </section>
           <p className="Article-P">Topic: {article.topic}</p>
         </section>
         <p className="Article-P">{article.body}</p>
         <section className="Article-Button_Section">
           {/* <button className="button-85-Left">comment</button> */}
           <p className="Inner-Button">Votes: {votes}</p>
-          <button className="button-85-Right" onClick={handleUpVote}>
+          <button
+            className="button-85-Right"
+            onClick={() => {
+              handleUpVote("up");
+            }}
+          >
             +
+          </button>
+          <button
+            className="button-85-Right"
+            onClick={() => {
+              handleUpVote("down");
+            }}
+          >
+            -
           </button>
         </section>
       </div>
-      <section className="Article-Comments">
+      <section className="Article-Comments-">
         <AddComment
           topic={article.topic}
           article_id={article_id}

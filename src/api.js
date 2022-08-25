@@ -18,10 +18,10 @@ const fetchArticle = (article_id) => {
     });
 };
 
-const updateVotes = (article_id) => {
+const updateVotesArticle = (article_id, value) => {
   return axios
     .patch(`https://nc-be-news.herokuapp.com/api/articles/${article_id}`, {
-      inc_votes: 1,
+      inc_votes: value,
     })
     .catch((err) => {
       console.log(err);
@@ -50,10 +50,11 @@ const deleteComment = (comment_id) => {
     .delete(`https://nc-be-news.herokuapp.com/api/comments/${comment_id}`)
     .then((res) => res.data);
 };
+
 export {
   fetchAllArticles,
   fetchArticle,
-  updateVotes,
+  updateVotesArticle,
   fetchComments,
   postComment,
   deleteComment,
