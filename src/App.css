@@ -130,7 +130,6 @@ a {
   display: inline-flex;
   width: 2em;
   filter: contrast(10);
-  filter: url();
 }
 .Welcome-Section {
   display: flex;
