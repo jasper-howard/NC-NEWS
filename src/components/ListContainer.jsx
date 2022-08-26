@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import ListItem from "./ListItem.jsx";
 import { useParams, useSearchParams } from "react-router-dom";
 import { StyleContext } from "../context/styleContext";
-import NC_DIV from "./NC_DIV.jsx";
+import DivWithContext from "./DivWithContext.jsx";
 
 const ListContainer = () => {
   const [allArticles, setAllArticles] = useState([]);
@@ -53,13 +53,13 @@ const ListContainer = () => {
   });
 
   return apiErr ? (
-    <NC_DIV>
+    <DivWithContext>
       <em className="Message">news not found</em>
-    </NC_DIV>
+    </DivWithContext>
   ) : loading ? (
-    <NC_DIV>
+    <DivWithContext>
       <em className="Message">LOADING... articles</em>
-    </NC_DIV>
+    </DivWithContext>
   ) : (
     <div>
       <section className="Form-Section">

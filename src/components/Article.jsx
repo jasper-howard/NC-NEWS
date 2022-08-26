@@ -4,7 +4,7 @@ import { fetchArticle, fetchComments, updateVotesArticle } from "../api";
 import "../component css/Button.css";
 import SingleComment from "./SingleComment";
 import AddComment from "./AddComment";
-import NC_DIV from "./NC_DIV";
+import DivWithContext from "./DivWithContext";
 import useImageGen from "../hooks/useImageGen";
 const Article = () => {
   const [article, setArticle] = useState({
@@ -73,13 +73,13 @@ const Article = () => {
   };
 
   return err ? (
-    <NC_DIV>
+    <DivWithContext>
       <em className="Message">article not found</em>
-    </NC_DIV>
+    </DivWithContext>
   ) : loading ? (
-    <NC_DIV>
+    <DivWithContext>
       <em className="Message">loading...</em>
-    </NC_DIV>
+    </DivWithContext>
   ) : (
     <>
       <div className={`Article-Div ${article.topic}`}>

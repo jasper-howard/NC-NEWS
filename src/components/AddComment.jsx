@@ -5,7 +5,7 @@ import { UserContext } from "../context/userContext";
 import { useContext, useState } from "react";
 import { postComment } from "../api";
 import OptimisticComment from "./OptimisticCommnet";
-import NC_DIV from "./NC_DIV";
+import DivWithContext from "./DivWithContext";
 
 const AddComment = ({ topic, article_id }) => {
   const [currText, setCurrText] = useState("");
@@ -56,9 +56,9 @@ const AddComment = ({ topic, article_id }) => {
         <br></br>
       </div>
       {apiErr ? (
-        <NC_DIV>
+        <DivWithContext>
           <em className="Message">comment post failure</em>
-        </NC_DIV>
+        </DivWithContext>
       ) : null}
       {submitted ? (
         <OptimisticComment

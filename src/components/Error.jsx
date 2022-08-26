@@ -1,9 +1,9 @@
-import NC_DIV from "./NC_DIV";
+import DivWithContext from "./DivWithContext";
 const Error = () => {
   return (
-    <NC_DIV>
+    <DivWithContext>
       <em className="Message">route not found</em>
-    </NC_DIV>
+    </DivWithContext>
   );
 };
 

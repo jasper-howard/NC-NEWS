@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import NC_DIV from "./NC_DIV";
+import DivWithContext from "./DivWithContext";
 import { useContext } from "react";
 import { StyleContext } from "../context/styleContext";
 
@@ -22,7 +22,7 @@ const TitleAndName = ({ user: { user } }) => {
           </h1>
         </div>
       </Link>
-      {/* <NC_DIV> */}
+      {/* <DivWithContext> */}
       <div className={`Title Welcome ${borderStyle}`}>
         <p>
           Welcome
@@ -31,7 +31,7 @@ const TitleAndName = ({ user: { user } }) => {
           {/* <img className="Avatar" src={user.avatar_url} alt="avatar pic" /> */}
         </p>
       </div>
-      {/* </NC_DIV> */}
+      {/* </DivWithContext> */}
     </section>
   );
 };

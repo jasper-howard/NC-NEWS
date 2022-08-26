@@ -1,7 +1,7 @@
 import { StyleContext } from "../context/styleContext";
 import { useContext } from "react";
 
-const NC_DIV = (props) => {
+const DivWithContext = (props) => {
   const { borderStyle, setBorderStyle } = useContext(StyleContext);
 
   if ((borderStyle === "all") | (borderStyle === "undefined")) {
@@ -11,4 +11,4 @@ const NC_DIV = (props) => {
   return <div className={`Div ${borderStyle}`}>{props.children}</div>;
 };
 
-export default NC_DIV;
+export default DivWithContext;
