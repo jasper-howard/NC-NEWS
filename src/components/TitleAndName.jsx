@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import DivWithContext from "./DivWithContext";
+
 import { useContext } from "react";
 import { StyleContext } from "../context/styleContext";
 

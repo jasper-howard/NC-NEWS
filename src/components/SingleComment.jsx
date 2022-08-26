@@ -3,6 +3,7 @@ import { UserContext } from "../context/userContext";
 import { useContext } from "react";
 import useImageGen from "../hooks/useImageGen";
 import useDeleter from "../hooks/useDeleter";
+import { LinearProgress } from "@mui/material";
 
 const SingleComment = ({ comment, topic }) => {
   const {
@@ -23,6 +24,7 @@ const SingleComment = ({ comment, topic }) => {
         <p className="Article-P">{comment.body}</p>
         {/* <p>{imageWait}</p> */}
         <img src={url} alt="" />
+        {imageWait === "plz wait" ? <LinearProgress /> : null}
         <section className="Button-Section">
           <button className={` ${topic}-s `} onClick={handleImgGen}>
             get image from ai

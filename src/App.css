@@ -189,8 +189,13 @@ textarea {
 }
 
 @media only screen and (min-width: 600px) {
+  App {
+    justify-content: center;
+    max-width: 10px;
+  }
   body {
     background-color: rgb(255, 255, 255);
+    justify-content: center;
   }
   .ListContainer {
     display: inline-flex;
@@ -238,6 +243,58 @@ textarea {
     font-size: 0.8em;
     text-align: left;
     margin-top: 3%;
+  }
+
+  .Tab-All {
+    /* position: fixed; coool */
+    display: block;
+    padding: 0.2rem;
+    padding-left: 0.3rem;
+    width: 17%;
+    text-align: left;
+    font-size: 0.8em;
+    border-right: solid 4px rgb(255, 0, 217);
+    border-bottom: solid 4px rgb(255, 0, 217);
+    padding-bottom: 10px;
+    background-color: yellow;
+    transform: skew(-8deg, 6deg);
+  }
+
+  .Tab-Football {
+    padding: 0.2rem;
+    padding-left: 0.3rem;
+    width: 17%;
+    text-align: left;
+    font-size: 0.8em;
+    border-right: solid 4px rgb(13, 0, 255);
+    border-bottom: solid 4px rgb(13, 0, 255);
+    padding-bottom: 10px;
+    background-color: yellow;
+    transform: skew(-6deg, 6deg);
+  }
+  .Tab-Coding {
+    padding: 0.2rem;
+    padding-left: 0.3rem;
+    text-align: left;
+    font-size: 0.8em;
+    width: 17%;
+    border-bottom: solid 4px rgb(255, 0, 0);
+    border-right: solid 4px rgb(255, 0, 0);
+    padding-bottom: 10px;
+    background-color: yellow;
+    transform: skew(-1deg, 3deg);
+  }
+  .Tab-Cooking {
+    padding: 0.2rem;
+    padding-left: 0.3rem;
+    text-align: left;
+    font-size: 0.8em;
+    width: 17%;
+    border-bottom: solid 4px rgb(34, 255, 0);
+    border-right: solid 4px rgb(34, 255, 0);
+    padding-bottom: 10px;
+    background-color: yellow;
+    transform: skew(2deg, -7deg);
   }
 }
 button {

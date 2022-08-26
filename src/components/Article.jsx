@@ -6,6 +6,8 @@ import SingleComment from "./SingleComment";
 import AddComment from "./AddComment";
 import DivWithContext from "./DivWithContext";
 import useImageGen from "../hooks/useImageGen";
+import { LinearProgress } from "@mui/material";
+
 const Article = () => {
   const [article, setArticle] = useState({
     title: "loading",
@@ -90,8 +92,10 @@ const Article = () => {
             <button className={`${article.topic}-s`} onClick={handleImgGen}>
               get image from ai
             </button>
+
             <p>{imageWait}</p>
           </section>
+          {imageWait === "plz wait" ? <LinearProgress /> : null}
           <p className="Article-P">Topic: {article.topic}</p>
         </section>
         <p className="Article-P">{article.body}</p>

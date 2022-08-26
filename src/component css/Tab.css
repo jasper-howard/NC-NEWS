@@ -21,17 +21,6 @@
   transform: skew(-8deg, 6deg);
 }
 
-.Tab-All-clicked {
-  padding: 0.2rem;
-  padding-left: 0.3rem;
-  width: 17vw;
-  text-align: left;
-  font-size: 0.8em;
-  border: solid 4px rgb(255, 0, 217);
-  padding-bottom: 10px;
-  background-color: yellow;
-  transform: skew(-6deg, 6deg);
-}
 .Tab-Football {
   padding: 0.2rem;
   padding-left: 0.3rem;
