@@ -95,7 +95,15 @@ const Article = () => {
 
             <p>{imageWait}</p>
           </section>
-          {imageWait === "plz wait" ? <LinearProgress /> : null}
+          {imageWait === "plz wait" ? (
+            <LinearProgress
+              sx={{
+                width: "80%",
+                marginLeft: "8%",
+                color: "pink",
+              }}
+            />
+          ) : null}
           <p className="Article-P">Topic: {article.topic}</p>
         </section>
         <p className="Article-P">{article.body}</p>

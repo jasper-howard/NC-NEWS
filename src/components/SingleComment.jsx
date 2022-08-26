@@ -24,7 +24,13 @@ const SingleComment = ({ comment, topic }) => {
         <p className="Article-P">{comment.body}</p>
         {/* <p>{imageWait}</p> */}
         <img src={url} alt="" />
-        {imageWait === "plz wait" ? <LinearProgress /> : null}
+        {imageWait === "plz wait" ? (
+          <LinearProgress
+            sx={{
+              width: "90%",
+            }}
+          />
+        ) : null}
         <section className="Button-Section">
           <button className={` ${topic}-s `} onClick={handleImgGen}>
             get image from ai
