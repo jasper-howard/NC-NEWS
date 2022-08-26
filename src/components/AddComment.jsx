@@ -5,11 +5,13 @@ import { UserContext } from "../context/userContext";
 import { useContext, useState } from "react";
 import { postComment } from "../api";
 import OptimisticComment from "./OptimisticCommnet";
+import NC_DIV from "./NC_DIV";
 
 const AddComment = ({ topic, article_id }) => {
   const [currText, setCurrText] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [commentRes, setCommentRes] = useState({});
+  const [apiErr, setApiErr] = useState(false);
   const {
     user: { user },
   } = useContext(UserContext);
@@ -26,7 +28,7 @@ const AddComment = ({ topic, article_id }) => {
         setSubmitted(true);
       })
       .catch((err) => {
-        console.log(err);
+        setApiErr(true);
       });
   };
   return (
@@ -53,6 +55,11 @@ const AddComment = ({ topic, article_id }) => {
         <br></br>
         <br></br>
       </div>
+      {apiErr ? (
+        <NC_DIV>
+          <em className="Message">comment post failure</em>
+        </NC_DIV>
+      ) : null}
       {submitted ? (
         <OptimisticComment
           topic={topic}

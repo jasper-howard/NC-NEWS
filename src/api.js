@@ -19,13 +19,12 @@ const fetchArticle = (article_id) => {
 };
 
 const updateVotesArticle = (article_id, value) => {
-  return axios
-    .patch(`https://nc-be-news.herokuapp.com/api/articles/${article_id}`, {
+  return axios.patch(
+    `https://nc-be-news.herokuapp.com/api/articles/${article_id}`,
+    {
       inc_votes: value,
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    }
+  );
 };
 
 const fetchComments = (article_id) => {
