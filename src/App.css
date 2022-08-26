@@ -14,35 +14,33 @@
 }
 .football {
   border: var(--football);
-  cursor: crosshair;
 }
 .cooking {
   border: var(--cooking);
-  cursor: crosshair;
 }
 .coding {
   border: var(--coding);
-  cursor: crosshair;
 }
 .all-s {
   border: var(--allS);
-  cursor: crosshair;
+  cursor: pointer;
 }
 .football-s {
   border: var(--footballS);
-  cursor: crosshair;
+  cursor: pointer;
 }
 .cooking-s {
   border: var(--cookingS);
-  cursor: crosshair;
+  cursor: pointer;
 }
 .coding-s {
   border: var(--codingS);
-  cursor: crosshair;
+  cursor: pointer;
 }
 
 .App {
   text-align: center;
+  cursor: crosshair;
 }
 .Small-Border {
   border: solid 200px;
@@ -119,16 +117,20 @@ a {
 .Welcome {
   writing-mode: vertical-lr;
   text-orientation: upright;
-  font-size: smaller;
+  font-size: 0.8em;
   text-align: left;
   margin-top: 3%;
-  margin-right: 1.5em;
+  margin-left: 10%;
+  padding-right: 2%;
+  padding-left: 2%;
+
   text-align: end;
 }
 .Avatar {
   display: inline-flex;
   width: 2em;
   filter: contrast(10);
+  filter: url();
 }
 .Welcome-Section {
   display: flex;
@@ -234,7 +236,7 @@ textarea {
   .Welcome {
     writing-mode: horizontal-tb;
     text-orientation: sideways;
-    font-size: 2em;
+    font-size: 0.8em;
     text-align: left;
     margin-top: 3%;
   }
@@ -260,5 +262,10 @@ button {
 
   justify-content: space-between;
   text-align: left;
-  padding: 5%;
+  padding: 2%;
+}
+
+.undefined for avatar {
+  padding: 3%;
+  margin-left: 4%;
 }

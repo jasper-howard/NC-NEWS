@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import NC_DIV from "./NC_DIV";
+import { useContext } from "react";
+import { StyleContext } from "../context/styleContext";
 
 const TitleAndName = ({ user: { user } }) => {
+  const { borderStyle } = useContext(StyleContext);
+
   return (
     <section className="Welcome-Section">
       <Link to="/">
@@ -18,16 +22,16 @@ const TitleAndName = ({ user: { user } }) => {
           </h1>
         </div>
       </Link>
-      <NC_DIV>
-        <div className="Welcome">
-          <p>
-            Welcome
-            <br />
-            {user.username}
-            <img className="Avatar" src={user.avatar_url} alt="avatar pic" />
-          </p>
-        </div>
-      </NC_DIV>
+      {/* <NC_DIV> */}
+      <div className={`Title Welcome ${borderStyle}`}>
+        <p>
+          Welcome
+          <br />
+          {user.username}
+          {/* <img className="Avatar" src={user.avatar_url} alt="avatar pic" /> */}
+        </p>
+      </div>
+      {/* </NC_DIV> */}
     </section>
   );
 };
