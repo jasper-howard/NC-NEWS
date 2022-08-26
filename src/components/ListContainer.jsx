@@ -62,7 +62,7 @@ const ListContainer = () => {
     </NC_DIV>
   ) : (
     <div>
-      <section>
+      <section className="Form-Section">
         <form>
           <label>SORT: </label>
           <select

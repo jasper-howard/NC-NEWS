@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import NC_DIV from "./NC_DIV";
 
 const TitleAndName = ({ user: { user } }) => {
   return (
@@ -17,15 +18,16 @@ const TitleAndName = ({ user: { user } }) => {
           </h1>
         </div>
       </Link>
-
-      <div className="Welcome">
-        {/* <img src={user.avatar_url} alt="avatar pic" /> */}
-        <p>
-          Welcome
-          <br />
-          {user.username}
-        </p>
-      </div>
+      <NC_DIV>
+        <div className="Welcome">
+          <p>
+            Welcome
+            <br />
+            {user.username}
+            <img className="Avatar" src={user.avatar_url} alt="avatar pic" />
+          </p>
+        </div>
+      </NC_DIV>
     </section>
   );
 };
