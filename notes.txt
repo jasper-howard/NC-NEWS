@@ -1,0 +1,11 @@
+for read me: 
+
+- useContext for user and style 
+
+- api to generate images 
+
+- ¿styled component?
+
+- axios 
+
+- dynamic rendering for mobile and desktop 

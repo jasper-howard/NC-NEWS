@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import "../component css/Tab.css";
 import { StyleContext } from "../context/styleContext";
 import { useContext } from "react";
-// map trough a get of topics to make tabs
 
 const Tabs = () => {
   const { borderStyle } = useContext(StyleContext);

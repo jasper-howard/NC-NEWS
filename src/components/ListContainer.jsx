@@ -5,10 +5,12 @@ import { useEffect } from "react";
 import ListItem from "./ListItem.jsx";
 import { useParams, useSearchParams } from "react-router-dom";
 import { StyleContext } from "../context/styleContext";
+import NC_DIV from "./NC_DIV.jsx";
 
 const ListContainer = () => {
   const [allArticles, setAllArticles] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [apiErr, setApiErr] = useState(false);
   const { topic } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const queryObj = Object.fromEntries([...searchParams]);
@@ -32,19 +34,32 @@ const ListContainer = () => {
 
   useEffect(() => {
     setBorderStyle(topic);
-    fetchAllArticles(topic, sort_by, order).then(({ articles }) => {
-      setAllArticles(articles);
-      setLoading(false);
-      setSearchParams(queryAssignObj); /// wants this in dependencies but then it glitches
-    });
+    setApiErr(false);
+
+    fetchAllArticles(topic, sort_by, order)
+      .then(({ articles }) => {
+        setAllArticles(articles);
+        setLoading(false);
+        setSearchParams(queryAssignObj); /// wants this in dependencies but then it glitches
+      })
+      .catch((err) => {
+        setApiErr(true);
+        console.log(err);
+      });
   }, [topic, sort_by, order, setSearchParams]);
 
   const listItems = allArticles.map((article, index) => {
     return <ListItem article={article} key={index} />;
   });
 
-  return loading ? (
-    <em>LOADING...Articles</em>
+  return apiErr ? (
+    <NC_DIV>
+      <em className="Message">news not found</em>
+    </NC_DIV>
+  ) : loading ? (
+    <NC_DIV>
+      <em className="Message">LOADING... articles</em>
+    </NC_DIV>
   ) : (
     <div>
       <section>

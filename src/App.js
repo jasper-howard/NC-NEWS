@@ -6,7 +6,7 @@ import Tabs from "./components/Tabs";
 import Article from "./components/Article";
 import { UserContext } from "./context/userContext";
 import TitleAndName from "./components/TitleAndName";
-// import NC_Div from "./components/NC_Div";
+import Error from "./components/Error";
 import { StyleContext } from "./context/styleContext";
 
 function App() {
@@ -32,6 +32,7 @@ function App() {
               <Route path="/" element={<ListContainer />} />
               <Route path="/:topic" element={<ListContainer />} />
               <Route path="/articles/:article_id" element={<Article />} />
+              <Route path="*" element={<Error />} />
             </Routes>
           </div>
         </StyleContext.Provider>

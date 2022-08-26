@@ -1,19 +1,23 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const TitleAndName = ({ user: { user } }) => {
   return (
     <section className="Welcome-Section">
-      <div>
-        <h1 className="Title">
-          NC
-          <h6>
-            THE WORLD <br />
-            AT YOUR <br />
-            THUMBS!
-          </h6>
-          NEWS
-        </h1>
-      </div>
+      <Link to="/">
+        <div>
+          <h1 className="Title">
+            NC
+            <h6>
+              THE WORLD <br />
+              AT YOUR <br />
+              THUMBS!
+            </h6>
+            NEWS
+          </h1>
+        </div>
+      </Link>
+
       <div className="Welcome">
         {/* <img src={user.avatar_url} alt="avatar pic" /> */}
         <p>

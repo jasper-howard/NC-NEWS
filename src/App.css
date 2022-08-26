@@ -235,3 +235,7 @@ button {
   text-align: center;
   padding: 5%;
 }
+
+.Message {
+  font-size: 5em;
+}

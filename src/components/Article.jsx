@@ -4,7 +4,7 @@ import { fetchArticle, fetchComments, updateVotesArticle } from "../api";
 import "../component css/Button.css";
 import SingleComment from "./SingleComment";
 import AddComment from "./AddComment";
-import deepai from "deepai";
+import NC_DIV from "./NC_DIV";
 import useImageGen from "../hooks/useImageGen";
 const Article = () => {
   const [article, setArticle] = useState({
@@ -73,9 +73,13 @@ const Article = () => {
   };
 
   return err ? (
-    <em>something went wrong</em>
+    <NC_DIV>
+      <em className="Message">article not found</em>
+    </NC_DIV>
   ) : loading ? (
-    <em>LOADING...</em>
+    <NC_DIV>
+      <em className="Message">loading...</em>
+    </NC_DIV>
   ) : (
     <>
       <div className={`Article-Div ${article.topic}`}>
@@ -92,10 +96,9 @@ const Article = () => {
         </section>
         <p className="Article-P">{article.body}</p>
         <section className="Article-Button_Section">
-          {/* <button className="button-85-Left">comment</button> */}
           <p className="Inner-Button">Votes: {votes}</p>
           <button
-            className="button-85-Right"
+            className={`${article.topic}-s`}
             onClick={() => {
               handleUpVote("up");
             }}
@@ -103,12 +106,12 @@ const Article = () => {
             +
           </button>
           <button
-            className="button-85-Right"
+            className={`${article.topic}-s`} ///set default dimensions
             onClick={() => {
               handleUpVote("down");
             }}
           >
-            -
+            --
           </button>
         </section>
       </div>

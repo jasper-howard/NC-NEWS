@@ -20,10 +20,14 @@ const AddComment = ({ topic, article_id }) => {
       username: user.username,
       body: currText,
       article_id: article_id,
-    }).then(({ data }) => {
-      setCommentRes(data.comment);
-      setSubmitted(true);
-    });
+    })
+      .then(({ data }) => {
+        setCommentRes(data.comment);
+        setSubmitted(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <>
@@ -40,10 +44,11 @@ const AddComment = ({ topic, article_id }) => {
             }}
             className="Add_Comment-text_box"
             placeholder="What do yo want to say?"
+            required="true"
           ></textarea>
           <br></br>
           <br></br>
-          <button className="button-85-Left">add comment</button>
+          <button className={`${topic}-s`}>add comment</button>
         </form>
         <br></br>
         <br></br>

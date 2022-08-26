@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../component css/List-Article.css";
-//unique might come in later
-const listItem = ({ article, unique }) => {
+
+const listItem = ({ article }) => {
   return (
     <>
       <Link to={`/articles/${article.article_id}`}>
