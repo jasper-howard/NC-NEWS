@@ -1,27 +1,33 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import NC_DIV from "./NC_DIV";
 
 const TitleAndName = ({ user: { user } }) => {
   return (
     <section className="Welcome-Section">
-      <div>
-        <h1 className="Title">
-          NC
-          <h6>
-            THE WORLD <br />
-            AT YOUR <br />
-            THUMBS!
-          </h6>
-          NEWS
-        </h1>
-      </div>
-      <div className="Welcome">
-        {/* <img src={user.avatar_url} alt="avatar pic" /> */}
-        <p>
-          {user.username}
-          <br />
-          Welcome
-        </p>
-      </div>
+      <Link to="/">
+        <div>
+          <h1 className="Title">
+            NC
+            <h6>
+              THE WORLD <br />
+              AT YOUR <br />
+              THUMBS!
+            </h6>
+            NEWS
+          </h1>
+        </div>
+      </Link>
+      <NC_DIV>
+        <div className="Welcome">
+          <p>
+            Welcome
+            <br />
+            {user.username}
+            <img className="Avatar" src={user.avatar_url} alt="avatar pic" />
+          </p>
+        </div>
+      </NC_DIV>
     </section>
   );
 };

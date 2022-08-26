@@ -3,12 +3,50 @@
   --football: solid 4px rgb(13, 0, 255);
   --coding: solid 4px rgb(255, 0, 0);
   --cooking: solid 4px rgb(34, 255, 0);
+  --allS: solid 2px rgb(255, 0, 217);
+  --footballS: solid 2px rgb(13, 0, 255);
+  --codingS: solid 2px rgb(255, 0, 0);
+  --cookingS: solid 2px rgb(34, 255, 0);
+}
+.all {
+  border: var(--all);
+  cursor: crosshair;
+}
+.football {
+  border: var(--football);
+  cursor: crosshair;
+}
+.cooking {
+  border: var(--cooking);
+  cursor: crosshair;
+}
+.coding {
+  border: var(--coding);
+  cursor: crosshair;
+}
+.all-s {
+  border: var(--allS);
+  cursor: crosshair;
+}
+.football-s {
+  border: var(--footballS);
+  cursor: crosshair;
+}
+.cooking-s {
+  border: var(--cookingS);
+  cursor: crosshair;
+}
+.coding-s {
+  border: var(--codingS);
+  cursor: crosshair;
 }
 
 .App {
   text-align: center;
 }
-
+.Small-Border {
+  border: solid 200px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -79,15 +117,23 @@ a {
   transform: skew(0deg, 0deg);
 } */
 .Welcome {
-  writing-mode: vertical-rl;
+  writing-mode: vertical-lr;
   text-orientation: upright;
   font-size: smaller;
   text-align: left;
   margin-top: 3%;
+  margin-right: 1.5em;
+  text-align: end;
+}
+.Avatar {
+  display: inline-flex;
+  width: 2em;
+  filter: contrast(10);
 }
 .Welcome-Section {
   display: flex;
   justify-content: space-between;
+  padding-right: 2em;
 }
 .Slogan {
   writing-mode: vertical-lr;
@@ -108,9 +154,111 @@ h6 {
   padding-left: 8%;
   font-weight: 300;
 }
+img {
+  width: 83%;
+  margin-right: 5%;
+}
+
+textarea {
+  resize: none;
+}
+
+.Div {
+  padding-left: 1rem;
+  width: 80%;
+  display: block;
+  border: var(--all);
+  margin: auto;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  padding-bottom: 10px;
+  background-color: yellow;
+  transform: skew(-3deg, 1deg);
+}
+.Article-Div-List {
+  padding-left: 1rem;
+  width: 80%;
+  display: block;
+  margin: auto;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  padding-bottom: 10px;
+  background-color: yellow;
+  transform: skew(-3deg, 1deg);
+}
 
 @media only screen and (min-width: 600px) {
   body {
     background-color: rgb(255, 255, 255);
   }
+  .ListContainer {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow: auto;
+  }
+  .Article-Div-List {
+    font-size: 0.7em;
+    max-width: 25vw;
+    padding-left: 1rem;
+    width: 80%;
+    display: block;
+    margin: auto;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    padding-bottom: 10px;
+    background-color: yellow;
+    transform: skew(-3deg, 1deg);
+  }
+  .Article-Div {
+    padding-left: 1rem;
+    width: 80%;
+    display: block;
+    margin: auto;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    padding-bottom: 10px;
+    background-color: yellow;
+    transform: skew(-3deg, 1deg);
+  }
+  textarea {
+    min-width: 95%;
+    resize: none;
+  }
+  .Article-Comments {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    overflow: auto;
+  }
+  .Welcome {
+    writing-mode: horizontal-tb;
+    text-orientation: sideways;
+    font-size: 2em;
+    text-align: left;
+    margin-top: 3%;
+  }
+}
+button {
+  background-color: yellow;
+  font-size: 1em;
+}
+
+.Button-Section {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  padding: 5%;
+}
+
+.Message {
+  font-size: 400%;
+}
+
+.Form-Section {
+  display: flex;
+
+  justify-content: space-between;
+  text-align: left;
+  padding: 5%;
 }

@@ -1,19 +1,22 @@
 import { fetchAllArticles } from "../api.js";
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import ListItem from "./ListItem.jsx";
 import { useParams, useSearchParams } from "react-router-dom";
+import { StyleContext } from "../context/styleContext";
+import NC_DIV from "./NC_DIV.jsx";
 
 const ListContainer = () => {
   const [allArticles, setAllArticles] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [apiErr, setApiErr] = useState(false);
   const { topic } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   const queryObj = Object.fromEntries([...searchParams]);
   const [sort_by, setSort_by] = useState(queryObj.sort_by);
   const [order, setOrder] = useState(queryObj.order);
-
+  const { setBorderStyle } = useContext(StyleContext);
   const queryAssignObj = {};
 
   if (sort_by) {
@@ -30,28 +33,41 @@ const ListContainer = () => {
   }
 
   useEffect(() => {
-    fetchAllArticles(topic, sort_by, order).then(({ articles }) => {
-      setAllArticles(articles);
-      setLoading(false);
-      setSearchParams(queryAssignObj); /// wants this in dependencies but then it glitches
-    });
+    setBorderStyle(topic);
+    setApiErr(false);
+
+    fetchAllArticles(topic, sort_by, order)
+      .then(({ articles }) => {
+        setAllArticles(articles);
+        setLoading(false);
+        setSearchParams(queryAssignObj); /// wants this in dependencies but then it glitches
+      })
+      .catch((err) => {
+        setApiErr(true);
+        console.log(err);
+      });
   }, [topic, sort_by, order, setSearchParams]);
 
   const listItems = allArticles.map((article, index) => {
-    return <ListItem article={article} unique={index} key={index} />;
+    return <ListItem article={article} key={index} />;
   });
 
-  return loading ? (
-    <em>LOADING...ListContainer</em>
+  return apiErr ? (
+    <NC_DIV>
+      <em className="Message">news not found</em>
+    </NC_DIV>
+  ) : loading ? (
+    <NC_DIV>
+      <em className="Message">LOADING... articles</em>
+    </NC_DIV>
   ) : (
     <div>
-      <section>
+      <section className="Form-Section">
         <form>
           <label>SORT: </label>
           <select
             onChange={(event) => {
               setSort_by(event.target.value);
-              // setSearchParams({ sort_by: event.target.value }); this feels like better place but it replaces other query
             }}
             className="Select"
           >
@@ -65,7 +81,6 @@ const ListContainer = () => {
           <select
             onChange={(event) => {
               setOrder(event.target.value);
-              // setSearchParams({ order: event.target.value });
             }}
             className="Select"
           >
@@ -74,7 +89,7 @@ const ListContainer = () => {
           </select>
         </form>
       </section>
-      {listItems}
+      <div className="ListContainer">{listItems}</div>
     </div>
   );
 };

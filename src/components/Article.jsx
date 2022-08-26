@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchArticle, fetchComments, updateVotes } from "../api";
+import { fetchArticle, fetchComments, updateVotesArticle } from "../api";
 import "../component css/Button.css";
 import SingleComment from "./SingleComment";
 import AddComment from "./AddComment";
-
+import NC_DIV from "./NC_DIV";
+import useImageGen from "../hooks/useImageGen";
 const Article = () => {
   const [article, setArticle] = useState({
     title: "loading",
@@ -25,6 +26,8 @@ const Article = () => {
     },
   ]);
   const { article_id } = useParams();
+
+  const { imageWait, url, handleImgGen } = useImageGen(article.title);
 
   useEffect(() => {
     fetchArticle(article_id)
@@ -58,34 +61,61 @@ const Article = () => {
     );
   });
 
-  const handleUpVote = (kind) => {
+  const handleUpVote = (polarity) => {
+    let value = 1;
+    if (polarity === "down") {
+      value = -1;
+    }
     setVotes((currentVote) => {
-      return currentVote + 1;
+      return currentVote + value;
     });
-    updateVotes(article_id);
+    updateVotesArticle(article_id, value);
   };
 
   return err ? (
-    <em>something went wrong</em>
+    <NC_DIV>
+      <em className="Message">article not found</em>
+    </NC_DIV>
   ) : loading ? (
-    <em>LOADING...</em>
+    <NC_DIV>
+      <em className="Message">loading...</em>
+    </NC_DIV>
   ) : (
     <>
       <div className={`Article-Div ${article.topic}`}>
         <section className="Article-Header">
           <h2 className="Article-H2">{article.title}</h2>
+          <img src={url} alt="" />
+          <section className="Button-Section">
+            <button className={`${article.topic}-s`} onClick={handleImgGen}>
+              get image from ai
+            </button>
+            <p>{imageWait}</p>
+          </section>
           <p className="Article-P">Topic: {article.topic}</p>
         </section>
         <p className="Article-P">{article.body}</p>
         <section className="Article-Button_Section">
-          {/* <button className="button-85-Left">comment</button> */}
           <p className="Inner-Button">Votes: {votes}</p>
-          <button className="button-85-Right" onClick={handleUpVote}>
+          <button
+            className={`${article.topic}-s`}
+            onClick={() => {
+              handleUpVote("up");
+            }}
+          >
             +
+          </button>
+          <button
+            className={`${article.topic}-s`} ///set default dimensions
+            onClick={() => {
+              handleUpVote("down");
+            }}
+          >
+            --
           </button>
         </section>
       </div>
-      <section className="Article-Comments">
+      <section className="Article-Comments-">
         <AddComment
           topic={article.topic}
           article_id={article_id}

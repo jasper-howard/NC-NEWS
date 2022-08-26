@@ -5,13 +5,15 @@ import { UserContext } from "../context/userContext";
 import { useContext, useState } from "react";
 import { postComment } from "../api";
 import OptimisticComment from "./OptimisticCommnet";
+import NC_DIV from "./NC_DIV";
 
 const AddComment = ({ topic, article_id }) => {
   const [currText, setCurrText] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [commentRes, setCommentRes] = useState({});
+  const [apiErr, setApiErr] = useState(false);
   const {
-    user: { user }, // why are you mad ?
+    user: { user },
   } = useContext(UserContext);
 
   const handleSubmit = (event) => {
@@ -20,15 +22,20 @@ const AddComment = ({ topic, article_id }) => {
       username: user.username,
       body: currText,
       article_id: article_id,
-    }).then(({ data }) => {
-      setCommentRes(data.comment);
-      setSubmitted(true);
-    });
+    })
+      .then(({ data }) => {
+        setCommentRes(data.comment);
+        setSubmitted(true);
+      })
+      .catch((err) => {
+        setApiErr(true);
+      });
   };
   return (
     <>
       <div className={`AddComment ${topic}`}>
         <form onSubmit={handleSubmit}>
+          <br />
           <label>hello {user.username} add a comment here</label>
           <br></br>
           <br></br>
@@ -39,14 +46,20 @@ const AddComment = ({ topic, article_id }) => {
             }}
             className="Add_Comment-text_box"
             placeholder="What do yo want to say?"
+            required="true"
           ></textarea>
           <br></br>
           <br></br>
-          <button className="button-85-Left">add comment</button>
+          <button className={`${topic}-s`}>add comment</button>
         </form>
         <br></br>
         <br></br>
       </div>
+      {apiErr ? (
+        <NC_DIV>
+          <em className="Message">comment post failure</em>
+        </NC_DIV>
+      ) : null}
       {submitted ? (
         <OptimisticComment
           topic={topic}

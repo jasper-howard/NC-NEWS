@@ -18,14 +18,13 @@ const fetchArticle = (article_id) => {
     });
 };
 
-const updateVotes = (article_id) => {
-  return axios
-    .patch(`https://nc-be-news.herokuapp.com/api/articles/${article_id}`, {
-      inc_votes: 1,
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+const updateVotesArticle = (article_id, value) => {
+  return axios.patch(
+    `https://nc-be-news.herokuapp.com/api/articles/${article_id}`,
+    {
+      inc_votes: value,
+    }
+  );
 };
 
 const fetchComments = (article_id) => {
@@ -50,10 +49,11 @@ const deleteComment = (comment_id) => {
     .delete(`https://nc-be-news.herokuapp.com/api/comments/${comment_id}`)
     .then((res) => res.data);
 };
+
 export {
   fetchAllArticles,
   fetchArticle,
-  updateVotes,
+  updateVotesArticle,
   fetchComments,
   postComment,
   deleteComment,

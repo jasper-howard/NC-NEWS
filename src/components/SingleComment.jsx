@@ -1,7 +1,7 @@
 import "../component css/List-Article.css";
 import { UserContext } from "../context/userContext";
 import { useContext } from "react";
-
+import useImageGen from "../hooks/useImageGen";
 import useDeleter from "../hooks/useDeleter";
 
 const SingleComment = ({ comment, topic }) => {
@@ -12,19 +12,27 @@ const SingleComment = ({ comment, topic }) => {
   const { deleteStyle, isDeleted, handleDelete } = useDeleter(
     comment.comment_id
   );
+  const { imageWait, url, handleImgGen } = useImageGen(comment.body);
 
   return isDeleted ? null : (
     <>
-      <div className={`Article-Div ${topic} ${deleteStyle}`}>
-        <h2 className="Article-H2">{comment.title}</h2>
-        <p className="Article-P">{comment.body}</p>
+      <div className={`Article-Div-List ${topic} ${deleteStyle}`}>
         <p className="Article-P">
           User: {comment.author === user.username ? "YOU!" : comment.author}
         </p>
-        <p className="Article-P">Votes: {comment.votes}</p>
-        {comment.author === user.username ? (
-          <button onClick={handleDelete}>Delete</button>
-        ) : null}
+        <p className="Article-P">{comment.body}</p>
+        {/* <p>{imageWait}</p> */}
+        <img src={url} alt="" />
+        <section className="Button-Section">
+          <button className={` ${topic}-s `} onClick={handleImgGen}>
+            get image from ai
+          </button>
+          {comment.author === user.username ? (
+            <button className={`${topic}-s `} onClick={handleDelete}>
+              Delete
+            </button>
+          ) : null}
+        </section>
       </div>
     </>
   );
