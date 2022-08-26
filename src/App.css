@@ -133,6 +133,7 @@ a {
 }
 .Welcome-Section {
   display: flex;
+  width: 80%;
   justify-content: space-between;
   padding-right: 2em;
 }
@@ -189,11 +190,12 @@ textarea {
 }
 
 @media only screen and (min-width: 600px) {
-  App {
+  .App {
     justify-content: center;
-    max-width: 10px;
+    /* max-width: 1000px; */
   }
   body {
+    /* max-width: 1000px; */
     background-color: rgb(255, 255, 255);
     justify-content: center;
   }
@@ -297,6 +299,7 @@ textarea {
     transform: skew(2deg, -7deg);
   }
 }
+
 button {
   background-color: yellow;
   font-size: 1em;
@@ -324,4 +327,13 @@ button {
 .undefined for avatar {
   padding: 3%;
   margin-left: 4%;
+}
+.Vote {
+  width: 6%;
+}
+.Vote- {
+  width: 6%;
+  font-weight: 600;
+
+  font-stretch: extra-expanded;
 }

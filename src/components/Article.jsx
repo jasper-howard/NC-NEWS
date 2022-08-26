@@ -110,7 +110,7 @@ const Article = () => {
         <section className="Article-Button_Section">
           <p className="Inner-Button">Votes: {votes}</p>
           <button
-            className={`${article.topic}-s`}
+            className={`${article.topic}-s Vote`}
             onClick={() => {
               handleUpVote("up");
             }}
@@ -118,12 +118,12 @@ const Article = () => {
             +
           </button>
           <button
-            className={`${article.topic}-s`} ///set default dimensions
+            className={`${article.topic}-s Vote-`} ///set default dimensions
             onClick={() => {
               handleUpVote("down");
             }}
           >
-            --
+            -
           </button>
         </section>
       </div>

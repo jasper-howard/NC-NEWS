@@ -2,6 +2,7 @@ import React from "react";
 import "../component css/List-Article.css";
 import useImageGen from "../hooks/useImageGen";
 import useDeleter from "../hooks/useDeleter";
+import { LinearProgress } from "@mui/material";
 
 const OptimisticComment = ({ comment_id, body, topic }) => {
   const { imageWait, url, handleImgGen } = useImageGen(body);
@@ -15,6 +16,13 @@ const OptimisticComment = ({ comment_id, body, topic }) => {
         <p className="Article-P">{imageWait}</p>
         <img src={url} />
         <br />
+        {imageWait === "plz wait" ? (
+          <LinearProgress
+            sx={{
+              width: "90%",
+            }}
+          />
+        ) : null}
         <section className="Button-Section">
           <button className={`${topic}-s `} onClick={handleImgGen}>
             get comment from ai
