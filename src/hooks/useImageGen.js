@@ -19,9 +19,3 @@ const useImageGen = (inputText) => {
 };
 
 export default useImageGen;
-
-{
-  /* <p>{imageWait}</p>
-          <img src={url} />
-          <button onClick={handleImgGen}>click to get an image from ai</button> */
-}

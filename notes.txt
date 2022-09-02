@@ -9,3 +9,32 @@ for read me:
 - axios 
 
 - dynamic rendering for mobile and desktop 
+
+- backend https://nc-be-news.herokuapp.com/api
+
+- deployed https://main.d32aujtg5t68uf.amplifyapp.com/articles/35
+
+Q/ to do 
+write READme
+add multiple comments / let them know you can’t add multiple 
+add multilple comment with optimistic render 
+add partial scroll
+show vote rank like #1
+how to change cursor with state 
+could plz wait bubble all around the background?
+
+
+done
+add progress bar
+move sort to left
+add select user
+¿is my BE fix bad? nah
+¿should i make styling components?
+put top bits in grid 
+¿should i make a selected context?
+¿how best to get images on there?
+style optimistic comment for web 
+¿how to get grid in desktop? tick
+button colour — could just make it all colours lol
+make votes up down and add votes to comment 
+make logo clickable/ home button

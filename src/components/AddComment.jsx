@@ -4,7 +4,7 @@ import "../component css/Comment.css";
 import { UserContext } from "../context/userContext";
 import { useContext, useState } from "react";
 import { postComment } from "../api";
-import OptimisticComment from "./OptimisticCommnet";
+import OptimisticComment from "./OptimisticComment";
 import DivWithContext from "./DivWithContext";
 
 const AddComment = ({ topic, article_id }) => {
@@ -12,9 +12,7 @@ const AddComment = ({ topic, article_id }) => {
   const [submitted, setSubmitted] = useState(false);
   const [commentRes, setCommentRes] = useState({});
   const [apiErr, setApiErr] = useState(false);
-  const {
-    user: { user },
-  } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();

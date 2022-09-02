@@ -8,31 +8,28 @@ import { UserContext } from "./context/userContext";
 import TitleAndName from "./components/TitleAndName";
 import Error from "./components/Error";
 import { StyleContext } from "./context/styleContext";
+import UserSelect from "./components/UserSelect";
 
 function App() {
-  const [user] = React.useState({
-    user: {
-      username: "cooljmessy",
-      name: "Peter Messy",
-      avatar_url:
-        "https://vignette.wikia.nocookie.net/mrmen/images/1/1a/MR_MESSY_4A.jpg/revision/latest/scale-to-width-down/250?cb=20170730171002",
-    },
+  const [user, setUser] = React.useState({
+    user: false,
   });
 
   const [borderStyle, setBorderStyle] = useState("All");
 
   return (
     <BrowserRouter>
-      <UserContext.Provider value={{ user }}>
+      <UserContext.Provider value={{ user, setUser }}>
         <StyleContext.Provider value={{ borderStyle, setBorderStyle }}>
           <div className="App">
-            <TitleAndName user={user} />
+            <TitleAndName />
             <Tabs />
             <Routes>
               <Route path="/" element={<ListContainer />} />
               <Route path="/:topic" element={<ListContainer />} />
               <Route path="/articles/:article_id" element={<Article />} />
               <Route path="*" element={<Error />} />
+              <Route path="/login" element={<UserSelect />} />
             </Routes>
           </div>
         </StyleContext.Provider>

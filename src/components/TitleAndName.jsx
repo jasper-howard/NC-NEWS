@@ -3,10 +3,14 @@ import { Link } from "react-router-dom";
 
 import { useContext } from "react";
 import { StyleContext } from "../context/styleContext";
+import { UserContext } from "../context/userContext";
 
-const TitleAndName = ({ user: { user } }) => {
+const TitleAndName = () => {
+  const { user } = useContext(UserContext);
+
   const { borderStyle } = useContext(StyleContext);
-
+  // change welcome <p> to something with change user
+  // make THE WORLD AT... appear in correct place on desktop
   return (
     <section className="Welcome-Section">
       <Link to="/">
@@ -24,33 +28,16 @@ const TitleAndName = ({ user: { user } }) => {
       </Link>
       {/* <DivWithContext> */}
       <div className={`Title Welcome ${borderStyle}`}>
-        <p>
-          Welcome
-          <br />
-          {user.username}
-          {/* <img className="Avatar" src={user.avatar_url} alt="avatar pic" /> */}
-        </p>
+        <Link to="/login">
+          <p>
+            {user.user === false ? "login here" : `welcome  ${user.username}`}
+          </p>
+        </Link>
       </div>
+
       {/* </DivWithContext> */}
     </section>
   );
 };
-
-// graveyard vvvv
-
-//className="Welcome" for later maybe
-
-{
-  /* <p style={{ textAlign: "left" }}>
-          The World <br />
-          At Your <br />
-          Thumbs
-        </p> */
-}
-<h6 className="Slogan">
-  THE WORLD <br />
-  AT YOUR <br />
-  THUMBS!
-</h6>;
 
 export default TitleAndName;

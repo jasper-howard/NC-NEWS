@@ -50,6 +50,12 @@ const deleteComment = (comment_id) => {
     .then((res) => res.data);
 };
 
+const fetchUsers = () => {
+  return axios.get(`https://nc-be-news.herokuapp.com/api/users`).then((res) => {
+    return res.data;
+  });
+};
+
 export {
   fetchAllArticles,
   fetchArticle,
@@ -57,4 +63,5 @@ export {
   fetchComments,
   postComment,
   deleteComment,
+  fetchUsers,
 };

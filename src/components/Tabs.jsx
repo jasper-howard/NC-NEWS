@@ -6,6 +6,7 @@ import { useContext } from "react";
 
 const Tabs = () => {
   const { borderStyle } = useContext(StyleContext);
+  /// why are tabs pranging out?? something to do with rerenders and async
 
   return (
     <>

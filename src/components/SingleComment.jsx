@@ -6,9 +6,7 @@ import useDeleter from "../hooks/useDeleter";
 import { LinearProgress } from "@mui/material";
 
 const SingleComment = ({ comment, topic }) => {
-  const {
-    user: { user },
-  } = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   const { deleteStyle, isDeleted, handleDelete } = useDeleter(
     comment.comment_id
