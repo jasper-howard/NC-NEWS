@@ -8,7 +8,7 @@
   margin-top: 1em;
   padding-bottom: 10px;
   background-color: yellow;
-  transform: skew(-3deg, 1deg);
+  /* transform: skew(-3deg, 1deg); */
 }
 .Article-H2 {
   text-align: left;

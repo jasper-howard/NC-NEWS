@@ -12,15 +12,12 @@
   display: block;
   text-align: left;
   /* border: solid; */
-
   margin: auto;
   margin-bottom: 1em;
   margin-top: 1em;
-
   padding-bottom: 10px;
-
   background-color: yellow;
-  transform: skew(-3deg, 1deg);
+  /* transform: skew(-3deg, 1deg); */
 }
 .football {
   border: var(--football);

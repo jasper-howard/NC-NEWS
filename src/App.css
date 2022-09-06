@@ -175,7 +175,7 @@ textarea {
   margin-top: 1em;
   padding-bottom: 10px;
   background-color: yellow;
-  transform: skew(-3deg, 1deg);
+  /* transform: skew(-3deg, 1deg); */
 }
 .Article-Div-List {
   padding-left: 1rem;
@@ -186,7 +186,7 @@ textarea {
   margin-top: 1em;
   padding-bottom: 10px;
   background-color: yellow;
-  transform: skew(-3deg, 1deg);
+  /* transform: skew(-3deg, 1deg); */
 }
 
 @media only screen and (min-width: 600px) {
@@ -216,7 +216,7 @@ textarea {
     margin-top: 1em;
     padding-bottom: 10px;
     background-color: yellow;
-    transform: skew(-3deg, 1deg);
+    /* transform: skew(-3deg, 1deg); */
   }
   .Article-Div {
     padding-left: 1rem;
@@ -227,7 +227,7 @@ textarea {
     margin-top: 1em;
     padding-bottom: 10px;
     background-color: yellow;
-    transform: skew(-3deg, 1deg);
+    /* transform: skew(-3deg, 1deg); */
   }
   textarea {
     min-width: 95%;
