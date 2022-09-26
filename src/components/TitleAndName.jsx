@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useContext } from "react";
@@ -7,10 +7,14 @@ import { UserContext } from "../context/userContext";
 
 const TitleAndName = () => {
   const { user } = useContext(UserContext);
-
   const { borderStyle } = useContext(StyleContext);
-  // change welcome <p> to something with change user
-  // make THE WORLD AT... appear in correct place on desktop
+  const [welcome, setWelcome] = useState("login here");
+
+  useEffect(() => {
+    user.user === false
+      ? setWelcome("login here")
+      : setWelcome(`welcome  ${user.username}`);
+  }, [user]);
   return (
     <section className="Welcome-Section">
       <Link to="/">
@@ -30,7 +34,8 @@ const TitleAndName = () => {
       <div className={`Title Welcome ${borderStyle}`}>
         <Link to="/login">
           <p>
-            {user.user === false ? "login here" : `welcome  ${user.username}`}
+            {/* {user.user === false ? "login here" : `welcome  ${user.username}`} */}
+            {welcome}
           </p>
         </Link>
       </div>

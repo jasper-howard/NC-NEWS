@@ -11,6 +11,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
+import DivWithContext from "./DivWithContext.jsx";
 // to do:
 // add password field
 // confirm keys don't need to be hidden
@@ -29,13 +30,16 @@ export const app = initializeApp({
 });
 
 export const auth = getAuth(app);
-// how to set new users dont want email per say
 
 // add add user endpoint to bc end
 // add default user for people to click
 // let firebase set id still
+// add username and name input to sign up field
+// .then the handle sign up to make be post
+// .then the handle login to make be get
+// after be interaction set user context
+
 onAuthStateChanged(auth, (user) => {
-  // change var name and put in component
   if (user !== null) {
     console.log("logged in");
     console.log(user);
@@ -45,12 +49,13 @@ onAuthStateChanged(auth, (user) => {
 });
 
 const UserSelect = () => {
-  const [currEmail, setCurrEmail] = useState();
+  const [newUserEmail, setNewUserEmail] = useState();
+  const [userEmail, setUserEmail] = useState();
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { setUser } = useContext(UserContext);
-
-  const password = "password123";
+  const [newUserPassword, setNewUserPassword] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     fetchUsers().then(({ users }) => {
@@ -80,9 +85,9 @@ const UserSelect = () => {
 
   const handleSignup = (e) => {
     e.preventDefault();
-    createUserWithEmailAndPassword(auth, currEmail, password)
+    createUserWithEmailAndPassword(auth, newUserEmail, newUserPassword)
       .then(() => {
-        console.log("account made"); /// now try to sign in : )
+        console.log("account made");
       })
       .catch((err) => {
         console.log(err);
@@ -90,50 +95,88 @@ const UserSelect = () => {
   };
   const handleLogin = (e) => {
     e.preventDefault();
-    signInWithEmailAndPassword(auth, currEmail, password)
+    signInWithEmailAndPassword(auth, userEmail, userPassword)
       .then(() => {
-        console.log("you're in pal"); /// now try to sign in : )
+        console.log("login successful");
       })
       .catch((err) => {
-        console.log("dint work pal");
+        console.log("login unsuccessful");
       });
   };
   return loading ? (
     <p>Loading</p>
   ) : (
     <>
-      <form onSubmit={handleSignup}>
-        <label>sign up with email </label>
-        <input
-          value={currEmail}
-          onChange={(event) => {
-            setCurrEmail(event.target.value);
+      <DivWithContext>
+        <h2 className="Title">DEFAULT USERS:</h2>
+        <p>CLICK TO LOGIN QUICKLY</p>
+        <div className="Default_user_flex">{usersArray}</div>
+      </DivWithContext>
+      <DivWithContext>
+        <h1 className="Title">SIGN UP</h1>
+        <form onSubmit={handleSignup}>
+          <label>sign up with email </label>
+          <input
+            value={newUserEmail}
+            onChange={(event) => {
+              setNewUserEmail(event.target.value);
+            }}
+            placeholder="email"
+            required={true}
+          ></input>
+          <label>set password</label>
+          <input
+            type="password"
+            name="password"
+            value={newUserPassword}
+            onChange={(event) => {
+              setNewUserPassword(event.target.value);
+            }}
+            placeholder="password"
+            required={true}
+          ></input>
+          <button>submit</button>
+        </form>
+      </DivWithContext>
+      <DivWithContext>
+        <h1 className="Title">SIGN IN</h1>
+
+        <form onSubmit={handleLogin}>
+          <label>sign in with email </label>
+          <input
+            value={userEmail}
+            onChange={(event) => {
+              setUserEmail(event.target.value);
+            }}
+            placeholder="email"
+            required={true}
+          ></input>
+          <label>password</label>
+          <input
+            type="password"
+            name="password"
+            value={userPassword}
+            onChange={(event) => {
+              setUserPassword(event.target.value);
+            }}
+            placeholder="password"
+            required={true}
+          ></input>
+          <button>submit</button>
+        </form>
+      </DivWithContext>
+      <DivWithContext>
+        <h1 className="Title">SIGN OUT</h1>
+
+        <button
+          onClick={() => {
+            signOut(auth);
+            setUser({ user: false });
           }}
-          placeholder="email"
-          required="true"
-        ></input>
-        <button>submit</button>
-      </form>
-      <form onSubmit={handleLogin}>
-        <label>sign up with email </label>
-        <input
-          value={currEmail}
-          onChange={(event) => {
-            setCurrEmail(event.target.value);
-          }}
-          placeholder="email"
-          required="true"
-        ></input>
-        <button>submit</button>
-      </form>
-      <button
-        onClick={() => {
-          signOut(auth); /// add error handling
-        }}
-      >
-        sign out
-      </button>
-      {usersArray}
+        >
+          sign out
+        </button>
+      </DivWithContext>
     </>
   );
 };
