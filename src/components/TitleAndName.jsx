@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import { useContext } from "react";
 import { StyleContext } from "../context/styleContext";
+import DivWithContext from "./DivWithContext";
 
 const TitleAndName = ({ user: { user } }) => {
   const { borderStyle } = useContext(StyleContext);
@@ -10,47 +11,36 @@ const TitleAndName = ({ user: { user } }) => {
   return (
     <section className="Welcome-Section">
       <Link to="/">
-        <div>
-          <h1 className="Title">
-            NC
+        <DivWithContext>
+          <div className="Mobile_Title_Div">
+            <h1 className="Title_Text">NC </h1>
             <h6>
               THE WORLD <br />
               AT YOUR <br />
               THUMBS!
             </h6>
-            NEWS
-          </h1>
-        </div>
+            <h1 className="Title_Text">NEWS</h1>
+          </div>
+          <div className="Desktop_Title_Div">
+            <h1 className="Title_Text">NC {"\u00A0"} NEWS</h1>
+
+            <h6>
+              THE WORLD <br />
+              AT YOUR <br />
+              THUMBS!
+            </h6>
+          </div>
+        </DivWithContext>
       </Link>
-      {/* <DivWithContext> */}
       <div className={`Title Welcome ${borderStyle}`}>
         <p>
           Welcome
           <br />
           {user.username}
-          {/* <img className="Avatar" src={user.avatar_url} alt="avatar pic" /> */}
         </p>
       </div>
-      {/* </DivWithContext> */}
     </section>
   );
 };
-
-// graveyard vvvv
-
-//className="Welcome" for later maybe
-
-{
-  /* <p style={{ textAlign: "left" }}>
-          The World <br />
-          At Your <br />
-          Thumbs
-        </p> */
-}
-<h6 className="Slogan">
-  THE WORLD <br />
-  AT YOUR <br />
-  THUMBS!
-</h6>;
 
 export default TitleAndName;

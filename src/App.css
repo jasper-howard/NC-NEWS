@@ -97,6 +97,31 @@ a {
   background-color: yellow;
   transform: skew(-3deg, 1deg);
 }
+.Title_Text {
+  /* padding-left: 1rem; */
+  /* padding-right: 40vw; */
+  padding-bottom: 10px;
+  text-align: left;
+  font-size: 4em;
+  font-weight: 200;
+  display: inline;
+
+  /* margin: 4%; */
+  background-color: yellow;
+  transform: skew(-3deg, 1deg);
+}
+.Mobile_Title_Div {
+  width: 60vw;
+  text-align: left;
+}
+.Desktop_Title_Div {
+  width: 60vw;
+  text-align: left;
+}
+
+h6 {
+  display: inline;
+}
 .Select {
   border-radius: 0px;
   /* border-color: #61dafb; */
@@ -189,6 +214,14 @@ textarea {
   transform: skew(-3deg, 1deg);
 }
 
+.Mobile_Title_div {
+  visibility: visible;
+}
+.Desktop_Title_Div {
+  visibility: hidden;
+  height: 0vw;
+  width: 60vw;
+}
 @media only screen and (min-width: 600px) {
   .App {
     justify-content: center;
@@ -298,6 +331,15 @@ textarea {
     background-color: yellow;
     transform: skew(2deg, -7deg);
   }
+  .Mobile_Title_Div {
+    visibility: hidden;
+    height: 0px;
+    width: 0px;
+  }
+  .Desktop_Title_Div {
+    visibility: visible;
+    height: auto;
+  }
 }
 
 button {
@@ -336,4 +378,10 @@ button {
   font-weight: 600;
 
   font-stretch: extra-expanded;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
